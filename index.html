@@ -28,114 +28,358 @@
   </header>
 
   <section id="stage">
-    <svg id="rose" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" data-mood="neutral">
+    <!-- ================= SCENE: seaside balcony ================= -->
+    <svg id="scene" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="skin" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#f1c3a0"/><stop offset=".5" stop-color="#f8d6b9"/><stop offset="1" stop-color="#eab995"/>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3a82d4"/><stop offset=".55" stop-color="#8ec2ee"/><stop offset="1" stop-color="#d4ebf8"/>
         </linearGradient>
-        <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#8d2b3a"/><stop offset="1" stop-color="#5a1424"/>
-        </linearGradient>
-        <path id="legL" d="M153 408 Q150 500 163 570 L166 738 L192 738 L196 570 Q203 480 200 408 Z"/>
-        <path id="legR" d="M247 408 Q250 500 237 570 L234 738 L208 738 L204 570 Q197 480 200 408 Z"/>
-        <clipPath id="thighHigh"><rect x="100" y="480" width="200" height="270"/></clipPath>
-        <radialGradient id="floor" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+        <radialGradient id="sun" cx=".9" cy=".08" r=".55">
+          <stop offset="0" stop-color="#fffbe8" stop-opacity=".95"/><stop offset=".22" stop-color="#fff4cc" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
         </radialGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2694bd"/><stop offset=".2" stop-color="#17afc0"/><stop offset=".6" stop-color="#14c8c0"/><stop offset="1" stop-color="#1ad8c4"/>
+        </linearGradient>
+        <linearGradient id="island" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4a8a55"/><stop offset="1" stop-color="#22552f"/>
+        </linearGradient>
+        <linearGradient id="ceil" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f4f0e8"/><stop offset="1" stop-color="#d9d3c7"/>
+        </linearGradient>
+        <linearGradient id="pillar" x1="0" x2="1">
+          <stop offset="0" stop-color="#d3ccbf"/><stop offset=".45" stop-color="#f1ebe0"/><stop offset="1" stop-color="#cbc3b5"/>
+        </linearGradient>
+        <linearGradient id="doorGlass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#28597a"/><stop offset=".45" stop-color="#3e9db8"/><stop offset=".7" stop-color="#2d7f98"/><stop offset="1" stop-color="#1a4258"/>
+        </linearGradient>
+        <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f6f8fa"/><stop offset=".4" stop-color="#a4adb7"/><stop offset=".6" stop-color="#6d7681"/><stop offset="1" stop-color="#c8cfd5"/>
+        </linearGradient>
+        <linearGradient id="steelV" x1="0" x2="1">
+          <stop offset="0" stop-color="#6d7681"/><stop offset=".35" stop-color="#eef1f4"/><stop offset="1" stop-color="#7c858f"/>
+        </linearGradient>
+        <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e2fbfa" stop-opacity=".3"/><stop offset="1" stop-color="#bff0ee" stop-opacity=".12"/>
+        </linearGradient>
+        <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+        <filter id="haze"><feGaussianBlur stdDeviation="1.3"/></filter>
       </defs>
 
-      <ellipse cx="200" cy="765" rx="120" ry="16" fill="url(#floor)"/>
+      <rect width="1000" height="1000" fill="url(#sky)"/>
+      <rect width="1000" height="1000" fill="url(#sun)"/>
+
+      <g filter="url(#soft)" fill="#fff">
+        <g class="cloud" style="animation-duration:48s"><ellipse cx="430" cy="300" rx="80" ry="18" opacity=".75"/><ellipse cx="470" cy="288" rx="42" ry="16" opacity=".8"/></g>
+        <g class="cloud" style="animation-duration:62s;animation-delay:-20s"><ellipse cx="770" cy="330" rx="95" ry="22" opacity=".9"/><ellipse cx="815" cy="312" rx="52" ry="22"/><ellipse cx="725" cy="320" rx="42" ry="15"/></g>
+        <g class="cloud" style="animation-duration:55s;animation-delay:-8s"><ellipse cx="900" cy="230" rx="62" ry="16" opacity=".85"/><ellipse cx="930" cy="220" rx="34" ry="14"/></g>
+        <g class="cloud" style="animation-duration:70s;animation-delay:-35s"><ellipse cx="620" cy="405" rx="90" ry="13" opacity=".65"/></g>
+        <g class="cloud" style="animation-duration:58s;animation-delay:-12s"><ellipse cx="360" cy="420" rx="64" ry="11" opacity=".55"/></g>
+      </g>
+
+      <g filter="url(#haze)">
+        <path d="M300 472 Q318 452 348 453 Q368 440 396 448 Q422 445 442 457 Q462 462 474 472Z" fill="url(#island)" opacity=".92"/>
+        <path d="M560 471 Q588 463 618 466 Q640 468 652 471Z" fill="#679c86" opacity=".55"/>
+        <path d="M712 472 Q744 452 786 450 Q826 437 868 445 Q918 438 958 451 Q988 455 1000 450 L1000 472Z" fill="url(#island)"/>
+        <circle cx="874" cy="466" r="2.6" fill="#fff" opacity=".8"/><circle cx="884" cy="467" r="2" fill="#ffe9b0" opacity=".8"/>
+      </g>
+
+      <rect y="470" width="1000" height="530" fill="url(#sea)"/>
+      <rect y="467" width="1000" height="7" fill="#eaf7fb" opacity=".45" filter="url(#haze)"/>
+      <g id="waves" stroke="#e9fffd" stroke-linecap="round" fill="none"></g>
+      <g id="sparkles" fill="#fff"></g>
+
+      <!-- sliding glass door -->
+      <rect width="222" height="1000" fill="url(#doorGlass)"/>
+      <path d="M40 160 L100 160 L20 860 L-40 860Z" fill="#fff" opacity=".08"/>
+      <rect x="0" y="560" width="222" height="12" fill="#a4adb7" opacity=".45"/>
+      <rect x="0" y="150" width="222" height="860" fill="none" stroke="#2a2d33" stroke-width="14"/>
+      <rect x="150" y="150" width="12" height="860" fill="#2a2d33"/>
+      <rect x="134" y="520" width="7" height="72" rx="3.5" fill="#c9d0d6"/>
+
+      <!-- pillar + ceiling -->
+      <rect x="222" width="80" height="1000" fill="url(#pillar)"/>
+      <polygon points="0,0 1000,0 1000,30 302,172 0,232" fill="url(#ceil)"/>
+      <polygon points="1000,30 302,172 302,194 1000,47" fill="#c9c2b4"/>
+      <polygon points="302,172 302,194 0,258 0,232" fill="#bab3a5"/>
+      <circle cx="560" cy="80" r="5" fill="#bdb6a8"/>
+
+      <!-- glass railing -->
+      <rect x="302" y="560" width="698" height="322" fill="url(#glass)"/>
+      <path d="M380 560 L424 560 L346 882 L302 882Z" fill="#fff" opacity=".13"/>
+      <path d="M700 560 L720 560 L642 882 L622 882Z" fill="#fff" opacity=".1"/>
+      <rect x="562" y="556" width="14" height="330" fill="url(#steelV)"/>
+      <rect x="842" y="556" width="14" height="330" fill="url(#steelV)"/>
+      <rect x="302" y="872" width="698" height="16" fill="url(#steel)"/>
+      <rect x="298" y="546" width="712" height="22" rx="11" fill="url(#steel)"/>
+
+      <!-- floor -->
+      <polygon points="0,886 1000,886 1000,1000 0,1000" fill="#e5e1d9"/>
+      <rect y="886" width="1000" height="7" fill="#000" opacity=".08"/>
+      <path d="M0 945 H1000 M250 886 L210 1000 M520 886 L520 1000 M790 886 L830 1000" stroke="#cfcac0" stroke-width="2"/>
+    </svg>
+
+    <!-- ================= ROSE ================= -->
+    <svg id="rose" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" data-mood="neutral">
+      <defs>
+        <!-- one continuous light across torso + legs (no seam at the hips) -->
+        <linearGradient id="skin" gradientUnits="userSpaceOnUse" x1="132" y1="0" x2="268" y2="0">
+          <stop offset="0" stop-color="#e3ae9a"/><stop offset=".22" stop-color="#f6d6c8"/><stop offset=".5" stop-color="#fbe2d6"/><stop offset=".78" stop-color="#f4d2c3"/><stop offset="1" stop-color="#dea793"/>
+        </linearGradient>
+        <linearGradient id="skinFace" x1="0" x2="1">
+          <stop offset="0" stop-color="#ebbba8"/><stop offset=".35" stop-color="#f9ddd0"/><stop offset=".65" stop-color="#f9ddd0"/><stop offset="1" stop-color="#e6b3a0"/>
+        </linearGradient>
+        <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ff3d4a"/><stop offset=".5" stop-color="#d8101f"/><stop offset="1" stop-color="#8c0614"/>
+        </linearGradient>
+        <linearGradient id="lens" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4f0c18" stop-opacity=".95"/><stop offset="1" stop-color="#c4405c" stop-opacity=".82"/>
+        </linearGradient>
+        <linearGradient id="gold" x1="0" x2="1">
+          <stop offset="0" stop-color="#b3842a"/><stop offset=".5" stop-color="#ffe28e"/><stop offset="1" stop-color="#b3842a"/>
+        </linearGradient>
+        <linearGradient id="denim" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7193c2"/><stop offset="1" stop-color="#4a6c9c"/>
+        </linearGradient>
+        <radialGradient id="floorShadow"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+
+        <!-- rose tattoo motif -->
+        <g id="tat" fill="none" stroke="#262a35" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-13 9 Q-25 11 -30 22 Q-18 23 -11 13Z" fill="#262a35" fill-opacity=".38"/>
+          <path d="M12 10 Q24 8 31 18 Q19 22 10 13Z" fill="#262a35" fill-opacity=".38"/>
+          <path d="M-11 -10 Q-22 -17 -23 -28 Q-12 -23 -8 -13Z" fill="#262a35" fill-opacity=".3"/>
+          <path d="M-29 21 Q-20 16 -12 12 M30 17 Q20 14 11 12 M-22 -27 Q-15 -19 -9 -13" stroke-width=".7"/>
+          <path d="M-15 0 Q-17 -10 -9 -14 Q-2 -18 4 -15 Q13 -13 15 -4 Q18 6 11 12 Q4 17 -4 16 Q-13 14 -15 6Z" fill="#262a35" fill-opacity=".2"/>
+          <path d="M-10 2 Q-12 -7 -4 -10 Q4 -12 9 -6 Q12 0 8 6 Q2 10 -4 9 Q-9 7 -10 2Z" fill="#262a35" fill-opacity=".22"/>
+          <path d="M-1 -1 Q3 -3 4 1 Q4 5 0 5 Q-4 5 -4 1 Q-4 -5 2 -6 Q7 -5 7 1"/>
+          <path d="M-15 3 Q-9 8 -4 9 M15 -2 Q10 6 8 6 M-9 -14 Q-6 -9 -4 -10 M4 -15 Q6 -10 9 -6"/>
+          <path d="M-8 13 L-6 10 M-3 15 L-2 11 M3 15 L3 11 M8 12 L7 9 M-13 -4 L-10 -3 M13 -8 L10 -6" stroke-width=".7"/>
+        </g>
+        <g id="vine" fill="none" stroke="#262a35" stroke-width="1.1" stroke-linecap="round">
+          <path d="M0 0 C8 -12 22 -8 20 4 C18 14 6 12 9 4 M20 4 C26 22 16 36 4 44 M14 26 C22 24 26 30 22 36"/>
+          <path d="M24 16 Q32 12 34 4 Q26 6 24 16Z M8 36 Q0 30 -6 32 Q0 38 8 36Z" fill="#262a35" fill-opacity=".35"/>
+        </g>
+
+        <path id="torso" d="M156 200 Q200 188 244 200 Q254 218 250 244 Q248 272 238 292 Q226 312 226 334 Q232 370 254 398 Q264 418 260 444 L140 444 Q136 418 146 398 Q168 370 174 334 Q174 312 162 292 Q152 272 150 244 Q146 218 156 200Z"/>
+        <path id="legL" d="M140 425 Q128 500 148 570 Q158 600 156 635 Q150 690 166 742 L190 742 Q194 690 195 640 Q197 600 199 570 Q205 510 202 445 Z"/>
+        <path id="legR" d="M260 425 Q272 500 252 570 Q242 600 244 635 Q250 690 234 742 L210 742 Q206 690 205 640 Q203 600 201 570 Q195 510 198 445 Z"/>
+        <clipPath id="skinClip"><use href="#torso"/><use href="#legL"/><use href="#legR"/></clipPath>
+      </defs>
+
+      <ellipse cx="200" cy="770" rx="110" ry="14" fill="url(#floorShadow)"/>
 
       <g id="root">
       <g id="breath">
 
-        <!-- hair behind -->
-        <g id="hairBack">
-          <path d="M136 108 C124 200 134 300 158 340 L242 340 C266 300 276 200 264 108 Z" fill="url(#hair)"/>
+        <!-- hair strands behind body -->
+        <g id="hairBack" fill="url(#hair)">
+          <path d="M166 120 Q168 158 186 160 L214 160 Q232 158 234 120Z" fill="#9a0a18"/>
+          <path class="wisp" d="M163 110 Q148 150 156 186 Q160 204 150 222 Q166 206 166 186 Q160 150 171 116Z"/>
+          <path class="wisp" d="M237 110 Q252 150 244 186 Q240 204 250 224 Q234 206 234 186 Q240 150 229 116Z"/>
         </g>
 
         <!-- ===== BASE BODY ===== -->
         <g id="body">
           <use href="#legL" fill="url(#skin)"/>
           <use href="#legR" fill="url(#skin)"/>
-          <rect x="188" y="148" width="24" height="46" fill="#eab995"/>
-          <path d="M158 192 Q200 180 242 192 L238 260 Q232 300 226 330 Q247 370 249 415 L151 415 Q153 370 174 330 Q168 300 162 260 Z" fill="url(#skin)"/>
-          <!-- arms -->
-          <g class="armL"><path d="M156 202 L132 290 L122 372" fill="none" stroke="#f1c3a0" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="121" cy="380" r="13" fill="#f1c3a0"/></g>
-          <g class="armR"><path d="M244 202 L268 290 L278 372" fill="none" stroke="#f1c3a0" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="279" cy="380" r="13" fill="#f1c3a0"/></g>
+          <path d="M168 740 L190 740 Q194 756 190 766 L160 768 Q154 762 160 754 Q164 748 168 740Z" fill="#f2cbbb"/>
+          <path d="M232 740 L210 740 Q206 756 210 766 L240 768 Q246 762 240 754 Q236 748 232 740Z" fill="#f2cbbb"/>
+          <path d="M186 145 L186 190 Q170 197 156 202 L244 202 Q230 197 214 190 L214 145Z" fill="#efc6b5"/>
+          <use href="#torso" fill="url(#skin)"/>
+          <g fill="none" stroke="#dca593" stroke-linecap="round">
+            <path d="M168 207 Q184 211 196 206 M204 206 Q216 211 232 207" stroke-width="1.4" opacity=".8"/>
+            <path d="M160 266 Q178 281 198 270 M202 270 Q222 281 240 266" stroke-width="1.4" opacity=".7"/>
+            <path d="M200 292 L200 348" stroke-width="1.2" opacity=".35"/>
+            <path d="M170 382 Q178 410 192 428 M230 382 Q222 410 208 428" stroke-width="1.3" opacity=".4"/>
+            <path d="M160 600 Q172 610 188 602 M240 600 Q228 610 212 602" stroke-width="1.3" opacity=".5"/>
+          </g>
+          <ellipse cx="200" cy="364" rx="2.4" ry="4.2" fill="#d09684"/>
+          <circle cx="200" cy="357.5" r="1.8" fill="url(#gold)"/><circle cx="200" cy="371" r="2.3" fill="url(#gold)"/>
+
+          <!-- tattoos -->
+          <g opacity=".85">
+            <use href="#tat" transform="translate(190 178) scale(.42)"/>
+            <use href="#tat" transform="translate(211 181) rotate(10) scale(.45)"/>
+          </g>
+          <g clip-path="url(#skinClip)" opacity=".85">
+            <use href="#tat" transform="translate(170 396) rotate(-10) scale(.72)"/>
+            <use href="#vine" transform="translate(166 384) rotate(170) scale(1.15)"/>
+            <use href="#tat" transform="translate(233 372) rotate(8) scale(.85)"/>
+            <use href="#tat" transform="translate(240 404) rotate(-6) scale(.6)"/>
+            <use href="#vine" transform="translate(236 350) rotate(195) scale(1.2)"/>
+            <use href="#tat" transform="translate(167 525) rotate(-8) scale(1.25)"/>
+            <use href="#vine" transform="translate(152 492) rotate(160) scale(1.3)"/>
+            <use href="#vine" transform="translate(178 548) rotate(20) scale(1)"/>
+            <use href="#tat" transform="translate(234 512) rotate(6) scale(1.35)"/>
+            <use href="#vine" transform="translate(250 470) rotate(200) scale(1.4)"/>
+            <use href="#vine" transform="translate(222 540) rotate(-20) scale(1.1)"/>
+            <use href="#tat" transform="translate(183 575) rotate(14) scale(.7)"/>
+            <use href="#tat" transform="translate(222 584) rotate(-12) scale(.65)"/>
+            <use href="#vine" transform="translate(170 660) rotate(10) scale(.9)"/>
+            <use href="#tat" transform="translate(228 660) rotate(-6) scale(.5)"/>
+          </g>
+
+          <!-- arms (upper arm pivots at shoulder, forearm at elbow) -->
+          <g class="armL">
+            <path d="M154 206 L132 300" stroke="#f2cbbb" stroke-width="25" stroke-linecap="round"/>
+            <use href="#tat" transform="translate(142 252) rotate(12) scale(.5)" opacity=".85"/>
+            <g class="foreL">
+              <path d="M132 300 L120 388" stroke="#f2cbbb" stroke-width="19" stroke-linecap="round"/>
+              <use href="#tat" transform="translate(126 350) rotate(8) scale(.46)" opacity=".85"/>
+              <ellipse cx="118" cy="404" rx="9.5" ry="16" transform="rotate(8 118 404)" fill="#f2cbbb"/>
+              <path d="M113 410 L111 420 M117 412 L116 422 M121 411 L121 420" stroke="#d6a291" stroke-width="1.2"/>
+              <ellipse cx="121" cy="382" rx="11" ry="3.5" transform="rotate(8 121 382)" fill="none" stroke="url(#gold)" stroke-width="2.6"/>
+              <rect x="112.5" y="413" width="5" height="2.4" fill="url(#gold)"/>
+            </g>
+          </g>
+          <g class="armR">
+            <path d="M246 206 L268 300" stroke="#f2cbbb" stroke-width="25" stroke-linecap="round"/>
+            <use href="#tat" transform="translate(258 252) rotate(-12) scale(.5)" opacity=".85"/>
+            <g class="foreR">
+              <path d="M268 300 L280 388" stroke="#f2cbbb" stroke-width="19" stroke-linecap="round"/>
+              <use href="#vine" transform="translate(272 318) rotate(-10) scale(.6)" opacity=".8"/>
+              <ellipse cx="282" cy="404" rx="9.5" ry="16" transform="rotate(-8 282 404)" fill="#f2cbbb"/>
+              <path d="M287 410 L289 420 M283 412 L284 422 M279 411 L279 420" stroke="#d6a291" stroke-width="1.2"/>
+            </g>
+          </g>
         </g>
 
-        <!-- lingerie: Rose's comfort limit, always stays on -->
+        <!-- white bikini w/ red trim: Rose's comfort limit, always stays on -->
         <g id="lingerie">
-          <path d="M170 246 Q185 278 200 254 Q215 278 230 246 Q215 232 200 242 Q185 232 170 246Z" fill="#3a0f1f" stroke="#c0405f" stroke-width="1.5"/>
-          <path d="M172 244 L166 200 M228 244 L234 200" stroke="#3a0f1f" stroke-width="3" fill="none"/>
-          <path d="M153 396 L247 396 L206 442 L200 434 L194 442 Z" fill="#3a0f1f" stroke="#c0405f" stroke-width="1.5"/>
+          <path d="M178 220 Q166 246 158 266 Q178 276 198 270 Q192 244 178 220Z" fill="#fbfbfb" stroke="#d81e34" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M222 220 Q234 246 242 266 Q222 276 202 270 Q208 244 222 220Z" fill="#fbfbfb" stroke="#d81e34" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M178 220 L190 186 M222 220 L210 186 M158 266 L150 264 M242 266 L250 264 M198 270 L202 270" stroke="#d81e34" stroke-width="2" fill="none"/>
+          <path d="M182 428 L148 386 M218 428 L252 386" stroke="#d81e34" stroke-width="2.4"/>
+          <path d="M182 428 Q200 436 218 428 L206 464 Q200 468 194 464Z" fill="#fbfbfb" stroke="#d81e34" stroke-width="2.5" stroke-linejoin="round"/>
         </g>
 
         <!-- ===== CLOTHING LAYERS (bottom → top) ===== -->
-        <g class="cloth" id="c-stockings" data-id="stockings">
-          <use href="#legL" fill="#2a1520" fill-opacity=".72" clip-path="url(#thighHigh)"/>
-          <use href="#legR" fill="#2a1520" fill-opacity=".72" clip-path="url(#thighHigh)"/>
-          <rect x="150" y="480" width="52" height="5" fill="#c0405f" opacity=".8"/>
-          <rect x="198" y="480" width="52" height="5" fill="#c0405f" opacity=".8"/>
+        <g class="cloth" id="c-sandals" data-id="sandals">
+          <path d="M154 768 L194 768 M206 768 L246 768" stroke="#a8743f" stroke-width="5" stroke-linecap="round"/>
+          <path d="M162 754 L191 752 M166 745 Q178 741 191 744 M168 738 Q179 734 190 738" stroke="url(#gold)" stroke-width="3" fill="none"/>
+          <path d="M238 754 L209 752 M234 745 Q222 741 209 744 M232 738 Q221 734 210 738" stroke="url(#gold)" stroke-width="3" fill="none"/>
+          <circle cx="179" cy="736" r="2.4" fill="#d81e34"/><circle cx="221" cy="736" r="2.4" fill="#d81e34"/>
         </g>
 
-        <g class="cloth" id="c-shoes" data-id="shoes">
-          <path d="M160 734 L196 734 L201 762 L148 762 Q148 748 160 734Z" fill="#a8183a"/>
-          <path d="M240 734 L204 734 L199 762 L252 762 Q252 748 240 734Z" fill="#a8183a"/>
-          <rect x="150" y="758" width="50" height="5" fill="#5a0c20"/>
-          <rect x="200" y="758" width="50" height="5" fill="#5a0c20"/>
+        <g class="cloth" id="c-shorts" data-id="shorts">
+          <path d="M144 398 Q200 414 256 398 Q264 432 264 474 L212 486 Q204 470 200 462 Q196 470 188 486 L136 474 Q136 432 144 398Z" fill="url(#denim)"/>
+          <path d="M144 398 Q200 414 256 398 L257 408 Q200 424 143 408Z" fill="#5878a8"/>
+          <path d="M150 412 Q164 432 174 415 M250 412 Q236 432 226 415" stroke="#3d5c8a" stroke-width="1.6" fill="none"/>
+          <path d="M200 420 L200 460" stroke="#3d5c8a" stroke-width="1.6"/>
+          <circle cx="200" cy="415" r="3" fill="url(#gold)"/>
+          <ellipse cx="168" cy="448" rx="18" ry="10" fill="#fff" opacity=".13"/><ellipse cx="232" cy="448" rx="18" ry="10" fill="#fff" opacity=".13"/>
+          <path d="M138 474 l2 6 M144 476 l1 6 M150 478 l2 5 M157 479 l0 6 M164 481 l1 5 M172 483 l2 5 M180 484 l0 5 M262 474 l-2 6 M256 476 l-1 6 M250 478 l-2 5 M243 479 l0 6 M236 481 l-1 5 M228 483 l-2 5 M220 484 l0 5" stroke="#dbe5f2" stroke-width="1.5"/>
         </g>
 
-        <g class="cloth" id="c-skirt" data-id="skirt">
-          <path d="M166 332 L234 332 L266 522 Q200 540 134 522 Z" fill="#5b2a6e"/>
-          <path d="M184 336 L170 528 M200 336 L200 534 M216 336 L230 528" stroke="#3f1a4f" stroke-width="2" fill="none"/>
-          <rect x="164" y="326" width="72" height="12" rx="3" fill="#3f1a4f"/>
+        <g class="cloth" id="c-tee" data-id="tee">
+          <path d="M152 201 Q200 189 248 201 Q256 230 250 260 Q248 282 244 300 Q200 308 156 300 Q152 282 150 260 Q144 230 152 201Z" fill="#fdfdfd"/>
+          <path d="M166 268 Q200 282 234 268 M178 286 Q200 292 222 286" stroke="#e7e7ec" stroke-width="2" fill="none"/>
+          <path d="M180 196 Q200 214 220 196" stroke="#d81e34" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M156 300 Q200 308 244 300" stroke="#d81e34" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <g class="armL"><circle cx="155" cy="205" r="16" fill="#fdfdfd"/><path d="M155 204 L144.5 248.8" stroke="#fdfdfd" stroke-width="32"/><path d="M144.5 248.8 L143.1 254.6" stroke="#d81e34" stroke-width="33"/></g>
+          <g class="armR"><circle cx="245" cy="205" r="16" fill="#fdfdfd"/><path d="M245 204 L255.5 248.8" stroke="#fdfdfd" stroke-width="32"/><path d="M255.5 248.8 L256.9 254.6" stroke="#d81e34" stroke-width="33"/></g>
         </g>
 
-        <g class="cloth" id="c-top" data-id="top">
-          <path d="M156 192 Q200 176 244 192 L240 262 Q236 300 231 346 L169 346 Q164 300 160 262Z" fill="#fbf1e8"/>
-          <path d="M180 188 Q200 224 220 188" fill="none" stroke="#e5d3c4" stroke-width="3"/>
-          <circle cx="200" cy="262" r="2.5" fill="#d8c3b3"/><circle cx="200" cy="292" r="2.5" fill="#d8c3b3"/><circle cx="200" cy="322" r="2.5" fill="#d8c3b3"/>
-          <g class="armL"><path d="M156 202 L141 258" fill="none" stroke="#fbf1e8" stroke-width="30" stroke-linejoin="round"/></g>
-          <g class="armR"><path d="M244 202 L259 258" fill="none" stroke="#fbf1e8" stroke-width="30" stroke-linejoin="round"/></g>
+        <!-- necklace (permanent jewelry) -->
+        <g id="necklace">
+          <path d="M184 194 Q200 224 216 194" stroke="url(#gold)" stroke-width="1.6" fill="none"/>
+          <circle cx="200" cy="215" r="4.2" fill="url(#gold)" stroke="#9c7224" stroke-width=".8"/>
         </g>
 
-        <g class="cloth" id="c-jacket" data-id="jacket">
-          <path d="M152 190 L190 184 L188 382 L146 382 Q150 300 152 190Z" fill="#26263a"/>
-          <path d="M248 190 L210 184 L212 382 L254 382 Q250 300 248 190Z" fill="#26263a"/>
-          <path d="M190 184 L170 236 L190 250Z M210 184 L230 236 L210 250Z" fill="#383852"/>
-          <g class="armL"><path d="M156 202 L132 290 L124 352" fill="none" stroke="#26263a" stroke-width="30" stroke-linejoin="round"/><rect x="108" y="346" width="32" height="8" fill="#383852" transform="rotate(14 124 350)"/></g>
-          <g class="armR"><path d="M244 202 L268 290 L276 352" fill="none" stroke="#26263a" stroke-width="30" stroke-linejoin="round"/><rect x="260" y="346" width="32" height="8" fill="#383852" transform="rotate(-14 276 350)"/></g>
-        </g>
-
-        <g class="cloth" id="c-scarf" data-id="scarf">
-          <path d="M170 170 Q200 200 230 170 L232 188 Q200 214 168 188Z" fill="#d6264f"/>
-          <path d="M214 196 L228 262 L212 258 L204 204Z" fill="#b01a3f"/>
+        <g class="cloth" id="c-kimono" data-id="kimono">
+          <g fill="#ffd3dd" fill-opacity=".42">
+            <path d="M150 200 L178 196 Q172 270 170 340 Q168 440 174 532 Q156 540 136 530 Q134 440 142 380 Q150 330 151 290 Q148 240 150 200Z"/>
+            <path d="M250 200 L222 196 Q228 270 230 340 Q232 440 226 532 Q244 540 264 530 Q266 440 258 380 Q250 330 249 290 Q252 240 250 200Z"/>
+          </g>
+          <path d="M178 196 Q172 270 170 340 Q168 440 174 532 M222 196 Q228 270 230 340 Q232 440 226 532 M136 530 Q156 540 174 532 M226 532 Q244 540 264 530" stroke="#e0345f" stroke-width="3" fill="none" opacity=".85"/>
+          <g fill="#e0345f" opacity=".55">
+            <circle cx="160" cy="250" r="3.5"/><circle cx="158" cy="330" r="3"/><circle cx="160" cy="420" r="3.5"/><circle cx="152" cy="490" r="3"/><circle cx="164" cy="512" r="2.5"/>
+            <circle cx="240" cy="260" r="3"/><circle cx="242" cy="340" r="3.5"/><circle cx="240" cy="430" r="3"/><circle cx="248" cy="496" r="3.5"/><circle cx="236" cy="515" r="2.5"/>
+          </g>
+          <g class="armL"><path d="M140 194 Q158 192 170 206 L154 322 Q130 326 108 316 Z" fill="#ffd3dd" fill-opacity=".45"/><path d="M154 322 Q130 326 108 316" stroke="#e0345f" stroke-width="3" fill="none"/><circle cx="138" cy="270" r="3" fill="#e0345f" opacity=".55"/></g>
+          <g class="armR"><path d="M260 194 Q242 192 230 206 L246 322 Q270 326 292 316 Z" fill="#ffd3dd" fill-opacity=".45"/><path d="M246 322 Q270 326 292 316" stroke="#e0345f" stroke-width="3" fill="none"/><circle cx="262" cy="270" r="3" fill="#e0345f" opacity=".55"/></g>
         </g>
 
         <!-- ===== HEAD ===== -->
         <g id="head">
-          <ellipse cx="200" cy="112" rx="40" ry="47" fill="url(#skin)"/>
-          <ellipse cx="176" cy="128" rx="9" ry="5" fill="#ff6f8f" class="blush"/>
-          <ellipse cx="224" cy="128" rx="9" ry="5" fill="#ff6f8f" class="blush"/>
-          <path d="M172 98 Q184 92 194 98 M206 98 Q216 92 228 98" stroke="#5a1424" stroke-width="3" fill="none" stroke-linecap="round" class="brows"/>
-          <g class="eyes">
-            <ellipse cx="184" cy="113" rx="7" ry="5.5" fill="#fff"/><ellipse cx="216" cy="113" rx="7" ry="5.5" fill="#fff"/>
-            <circle cx="185" cy="113" r="3.6" fill="#2b6a5b"/><circle cx="217" cy="113" r="3.6" fill="#2b6a5b"/>
-            <circle cx="186" cy="111.5" r="1.2" fill="#fff"/><circle cx="218" cy="111.5" r="1.2" fill="#fff"/>
-            <path d="M176 108 Q184 103 192 108 M208 108 Q216 103 224 108" stroke="#2b1018" stroke-width="2.5" fill="none"/>
+          <!-- messy bun -->
+          <path d="M166 58 Q156 26 186 14 Q214 4 232 22 Q246 40 234 58 Q216 70 190 68 Q172 66 166 58Z" fill="url(#hair)"/>
+          <path d="M178 50 Q172 30 196 22 Q220 18 224 38 Q226 54 204 56 Q186 56 190 40 Q194 30 208 34" stroke="#8c0614" stroke-width="2" fill="none"/>
+          <path d="M184 24 Q200 15 216 21 M226 30 Q234 40 230 52" stroke="#ff6b72" stroke-width="2" fill="none" opacity=".7"/>
+          <path d="M172 34 Q180 20 198 18 M206 14 Q224 14 232 30" stroke="#b80a1c" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <g fill="none" stroke="#e8202f" stroke-width="1.6" stroke-linecap="round" opacity=".9">
+            <path class="wisp" d="M169 40 Q160 34 153 37"/><path class="wisp" d="M180 18 Q175 9 167 9"/>
+            <path class="wisp" d="M226 18 Q233 8 243 10"/><path class="wisp" d="M236 44 Q247 41 252 47"/>
+            <path class="wisp" d="M204 11 Q207 3 215 1"/><path class="wisp" d="M190 13 Q186 5 190 0"/>
           </g>
-          <path d="M200 120 L197 130 L203 130" stroke="#d9a283" stroke-width="2" fill="none"/>
-          <path class="m m-neutral" d="M191 140 Q200 144 209 140" stroke="#b02a4a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path class="m m-smile"   d="M189 137 Q200 152 211 137 Z" fill="#b02a4a" stroke="#b02a4a" stroke-width="2" stroke-linejoin="round"/>
-          <path class="m m-shy"     d="M194 141 Q200 138 206 141" stroke="#b02a4a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <ellipse class="m m-wow"  cx="200" cy="142" rx="5" ry="6" fill="#8d1e3a"/>
-          <!-- bangs & hair front -->
-          <path d="M158 112 Q156 56 204 52 Q248 54 242 112 Q236 78 206 76 Q176 78 158 112Z" fill="url(#hair)"/>
-          <path d="M158 112 Q150 150 160 176 Q166 140 166 112Z M242 112 Q250 150 240 176 Q234 140 234 112Z" fill="url(#hair)"/>
-          <!-- little rose hair clip -->
-          <g transform="translate(232 70)"><circle r="9" fill="#e0345f"/><path d="M-4 0 Q0 -6 4 0 Q0 5 -4 0" fill="none" stroke="#8d1236" stroke-width="1.6"/></g>
+
+          <ellipse cx="164" cy="114" rx="5" ry="9" fill="#efc2b1"/><ellipse cx="236" cy="114" rx="5" ry="9" fill="#efc2b1"/>
+          <circle cx="164" cy="127" r="3.6" fill="none" stroke="url(#gold)" stroke-width="1.6"/><circle cx="236" cy="127" r="3.6" fill="none" stroke="url(#gold)" stroke-width="1.6"/>
+          <circle cx="165" cy="118" r="1.4" fill="url(#gold)"/><circle cx="235" cy="118" r="1.4" fill="url(#gold)"/>
+
+          <path d="M164 104 Q164 62 200 62 Q236 62 236 104 Q236 134 222 150 Q210 162 200 162 Q190 162 178 150 Q164 134 164 104Z" fill="url(#skinFace)"/>
+
+          <!-- swept-back hair -->
+          <path d="M161 112 Q154 70 182 60 Q200 54 218 60 Q246 70 239 112 Q236 88 224 80 Q212 74 200 76 Q186 74 176 80 Q164 88 161 112Z" fill="url(#hair)"/>
+          <path d="M172 90 Q180 70 192 60 M184 80 Q192 66 202 58 M216 80 Q210 66 204 58 M228 90 Q222 72 210 62" stroke="#9a0a1a" stroke-width="1.5" fill="none"/>
+          <path d="M178 84 Q186 68 196 62 M222 84 Q214 68 206 62" stroke="#ff6a72" stroke-width="1.4" fill="none" opacity=".7"/>
+
+          <g fill="#c98a74" opacity=".55">
+            <circle cx="178" cy="125" r=".9"/><circle cx="183" cy="129" r=".8"/><circle cx="187" cy="124" r=".8"/><circle cx="195" cy="127" r=".7"/>
+            <circle cx="205" cy="127" r=".7"/><circle cx="213" cy="124" r=".8"/><circle cx="217" cy="129" r=".8"/><circle cx="222" cy="125" r=".9"/>
+          </g>
+          <ellipse cx="178" cy="131" rx="9" ry="5" fill="#ff7590" class="blush"/>
+          <ellipse cx="222" cy="131" rx="9" ry="5" fill="#ff7590" class="blush"/>
+
+          <path d="M172 97 Q183 91 194 96 M206 96 Q217 91 228 97" stroke="#b0202c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <g class="eyes">
+            <path d="M176 112 Q184 106 192 112 Q184 117 176 112Z" fill="#fff"/><path d="M208 112 Q216 106 224 112 Q216 117 208 112Z" fill="#fff"/>
+            <circle cx="184" cy="112" r="3.6" fill="#3f7d5a"/><circle cx="216" cy="112" r="3.6" fill="#3f7d5a"/>
+            <circle cx="184" cy="112" r="1.6" fill="#111"/><circle cx="216" cy="112" r="1.6" fill="#111"/>
+            <circle cx="185.2" cy="110.8" r="1" fill="#fff"/><circle cx="217.2" cy="110.8" r="1" fill="#fff"/>
+            <path d="M175 111 Q184 104 193 111 M207 111 Q216 104 225 111" stroke="#2a1018" stroke-width="2.2" fill="none"/>
+          </g>
+
+          <path d="M201 114 Q199 128 195 133 Q200 137 205 133" stroke="#d49786" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M195 134 a3 3 0 1 0 4 3" stroke="url(#gold)" stroke-width="1.6" fill="none"/>
+
+          <g class="m m-neutral">
+            <path d="M188 145 Q193 140 200 143 Q207 140 212 145 Q200 147 188 145Z" fill="#cc4460"/>
+            <path d="M188 145 Q200 147 212 145 Q206 153 200 153 Q194 153 188 145Z" fill="#dd5a73"/>
+            <ellipse cx="202" cy="149" rx="3" ry="1.2" fill="#fff" opacity=".35"/>
+          </g>
+          <g class="m m-smile">
+            <path d="M185 143 Q193 139 200 141 Q207 139 215 143 Q200 146 185 143Z" fill="#cc4460"/>
+            <path d="M185 143 Q200 146 215 143 Q208 156 200 156 Q192 156 185 143Z" fill="#dd5a73"/>
+            <path d="M188 144 Q200 147 212 144 Q200 150 188 144Z" fill="#fff"/>
+          </g>
+          <g class="m m-shy">
+            <path d="M193 145 Q197 142 200 144 Q203 142 207 145 Q200 146 193 145Z" fill="#cc4460"/>
+            <path d="M193 145 Q200 146 207 145 Q203 150 200 150 Q197 150 193 145Z" fill="#dd5a73"/>
+          </g>
+          <g class="m m-wow"><ellipse cx="200" cy="147" rx="5.5" ry="6.5" fill="#7a1a2e" stroke="#d9506a" stroke-width="3"/></g>
+
+          <!-- loose strands framing the face -->
+          <g fill="url(#hair)">
+            <path class="wisp" d="M163 94 Q152 130 159 162 Q163 182 156 200 Q170 182 167 160 Q162 128 171 98Z"/>
+            <path class="wisp" d="M237 94 Q248 128 241 158 Q237 180 246 202 Q232 182 234 158 Q238 128 229 98Z"/>
+          </g>
+          <g fill="none" stroke="#e8202f" stroke-width="1.3" stroke-linecap="round" opacity=".85">
+            <path class="wisp" d="M171 92 Q165 116 172 138"/><path class="wisp" d="M229 92 Q236 112 230 134"/>
+          </g>
+
+          <!-- rose hair clip -->
+          <g transform="translate(170 54)">
+            <circle r="13" fill="#b30f20"/>
+            <path d="M0 -3 Q4 -3 4 1 Q4 6 -1 6 Q-7 6 -7 0 Q-7 -7 0 -8 Q9 -8 10 1 Q11 11 0 12 Q-12 12 -12 0" fill="none" stroke="#6e0612" stroke-width="1.6"/>
+            <path d="M-6 -10 Q0 -14 6 -10" stroke="#e8394c" stroke-width="1.4" fill="none"/>
+          </g>
+
+          <g class="cloth" id="c-sunglasses" data-id="sunglasses">
+            <rect x="169" y="102" width="28" height="21" rx="5" fill="url(#lens)" stroke="url(#gold)" stroke-width="2"/>
+            <rect x="203" y="102" width="28" height="21" rx="5" fill="url(#lens)" stroke="url(#gold)" stroke-width="2"/>
+            <path d="M197 108 Q200 105 203 108 M169 107 L162 110 M231 107 L238 110" stroke="url(#gold)" stroke-width="2" fill="none"/>
+            <path d="M173 106 L181 106 M207 106 L215 106" stroke="#fff" stroke-width="1.6" opacity=".55" stroke-linecap="round"/>
+          </g>
         </g>
 
       </g>
@@ -153,7 +397,7 @@
       <h2>Wardrobe <small>(tap an item, or tap Rose)</small></h2>
       <div class="grid" id="wardrobe"></div>
     </section>
-    <p class="hint">Rose decides what she's comfortable with — build trust first. Her limit is lingerie.</p>
+    <p class="hint">Rose decides what she's comfortable with, so build trust first. Her limit is her bikini.</p>
   </aside>
 </main>
 

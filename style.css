@@ -15,7 +15,7 @@ button.small{padding:.35rem .7rem;font-size:.85rem}
 .gate-card{background:var(--card);padding:2rem;border-radius:20px;text-align:center;max-width:380px;display:grid;gap:.8rem}
 .gate-card h1{font-size:2.4rem}
 
-#game{display:grid;grid-template-columns:minmax(280px,1fr) 360px;grid-template-rows:auto 1fr;gap:16px;max-width:1000px;margin:0 auto;padding:16px;height:100%}
+#game{display:grid;grid-template-columns:minmax(280px,1fr) 360px;grid-template-rows:auto 1fr;gap:16px;max-width:1040px;margin:0 auto;padding:16px;height:100%}
 #game[hidden]{display:none}
 header{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 header h1{font-size:1.7rem}
@@ -24,11 +24,23 @@ header h1{font-size:1.7rem}
 .bar{flex:1;height:14px;background:#ffffff14;border-radius:99px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--rose2));transition:width .6s}
 
-#stage{position:relative;overflow:hidden;min-height:0;display:flex;justify-content:center;background:linear-gradient(#2c1530,#1b0d1c);border-radius:24px;overflow:hidden}
-#rose{overflow:visible;height:100%;max-height:calc(100vh - 100px);width:auto;max-width:100%}
-#bubble{position:absolute;left:50%;bottom:14px;transform:translate(-50%,8px);background:#fff;color:#2a1020;padding:.65rem 1rem;border-radius:16px;font-weight:600;max-width:88%;text-align:center;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 6px 20px #0008}
-#bubble.on{opacity:1;transform:translate(-50%,0)}
+/* ---------- stage: balcony scene + character ---------- */
+#stage{position:relative;overflow:hidden;min-height:0;display:flex;justify-content:center;background:#8ec2ee;border-radius:24px}
+#scene{position:absolute;inset:0;width:100%;height:100%}
+#rose{position:relative;z-index:1;overflow:visible;height:100%;max-height:calc(100vh - 100px);width:auto;max-width:100%}
+#stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(ellipse at 85% 0%,#fff6d93d,transparent 55%),radial-gradient(ellipse at center,transparent 62%,#00000030)}
+#bubble{position:absolute;z-index:3;right:14px;top:14px;transform:translateY(-8px);background:#fff;color:#2a1020;padding:.65rem 1rem;border-radius:16px;font-weight:600;max-width:min(46%,280px);text-align:left;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 6px 20px #0006}
+#bubble.on{opacity:1;transform:translateY(0)}
 
+.cloud{animation:drift 50s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.spark{transform-box:fill-box;transform-origin:center;animation:twinkle 2.6s ease-in-out infinite;opacity:0}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
+.ripple{animation:ripple 7s ease-in-out infinite}
+@keyframes ripple{0%,100%{transform:translateX(0);opacity:.15}50%{transform:translateX(14px);opacity:.5}}
+
+/* ---------- panel ---------- */
 #panel{background:var(--card);border-radius:24px;padding:16px;overflow:auto;display:flex;flex-direction:column;gap:14px}
 h2{margin:0 0 8px;font-size:1rem;color:var(--rose2)}
 h2 small{color:var(--mut);font-weight:400}
@@ -38,9 +50,9 @@ h2 small{color:var(--mut);font-weight:400}
 .grid button.off{opacity:.55}
 .hint{color:var(--mut);font-size:.8rem;margin:0}
 
-/* ---------- Rose: clothing / interaction ---------- */
+/* ---------- Rose: clothing ---------- */
 .cloth{cursor:pointer;transition:filter .15s}
-.cloth:hover{filter:drop-shadow(0 0 6px #ff7a9c)}
+.cloth:hover{filter:drop-shadow(0 0 5px #ff7a9c)}
 .cloth.hidden{display:none}
 .cloth.removing{animation:shed .9s ease-in forwards;pointer-events:none}
 .cloth.dressing{animation:shed .7s ease-out reverse}
@@ -50,79 +62,103 @@ h2 small{color:var(--mut);font-weight:400}
   100%{transform:translate(-150px,260px) rotate(-25deg);opacity:0}
 }
 
+/* ---------- Rose: idle life ---------- */
 #root{transform-origin:200px 760px}
 #breath{animation:breathe 4s ease-in-out infinite;transform-origin:200px 400px}
 @keyframes breathe{50%{transform:translateY(-3px) scale(1.006)}}
-
-.eyes{animation:blink 4.5s infinite;transform-origin:200px 113px}
+.eyes{animation:blink 4.5s infinite;transform-origin:200px 112px}
 @keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.wisp{transform-box:fill-box;transform-origin:top center;animation:breeze 3.2s ease-in-out infinite}
+.wisp:nth-child(2n){animation-duration:4.1s;animation-delay:-1.3s}
+.wisp:nth-child(3n){animation-duration:2.7s;animation-delay:-.6s}
+@keyframes breeze{0%,100%{transform:rotate(0)}50%{transform:rotate(4deg)}}
 
+/* moods */
 .m{display:none}
 [data-mood=neutral] .m-neutral,[data-mood=smile] .m-smile,[data-mood=shy] .m-shy,[data-mood=wow] .m-wow{display:inline}
 .blush{opacity:0;transition:opacity .4s}
-[data-mood=shy] .blush,[data-mood=smile] .blush{opacity:.55}
-[data-mood=shy] .blush{opacity:.9}
+[data-mood=smile] .blush{opacity:.45}
+[data-mood=shy] .blush{opacity:.85}
 
-.armL{transform-origin:156px 202px}
-.armR{transform-origin:244px 202px}
-#head{transform-origin:200px 170px}
+/* skeleton pivots: shoulder → elbow */
+.armL{transform-origin:154px 206px}
+.armR{transform-origin:246px 206px}
+.foreL{transform-origin:132px 300px}
+.foreR{transform-origin:268px 300px}
+#head{transform-origin:200px 165px}
 
 /* wave */
 .a-wave .armR{animation:wave 2.6s ease-in-out}
-@keyframes wave{0%{transform:rotate(0)}18%{transform:rotate(-150deg)}30%{transform:rotate(-168deg)}42%{transform:rotate(-146deg)}54%{transform:rotate(-168deg)}66%{transform:rotate(-146deg)}100%{transform:rotate(0)}}
+.a-wave .foreR{animation:waveF 2.6s ease-in-out}
+@keyframes wave{0%,100%{transform:rotate(0)}20%,80%{transform:rotate(-140deg)}}
+@keyframes waveF{0%,100%{transform:rotate(0)}20%{transform:rotate(-30deg)}32%{transform:rotate(10deg)}44%{transform:rotate(-30deg)}56%{transform:rotate(10deg)}68%{transform:rotate(-30deg)}}
 .a-wave #head{animation:tilt 2.6s ease-in-out}
 @keyframes tilt{20%,70%{transform:rotate(5deg)}}
 
 /* twirl */
 .a-twirl #root{animation:twirl 2.2s ease-in-out}
 @keyframes twirl{0%{transform:scaleX(1)}25%{transform:scaleX(.04)}50%{transform:scaleX(-1)}75%{transform:scaleX(.04)}100%{transform:scaleX(1)}}
-.a-twirl .armL{animation:twirlL 2.2s ease-in-out}
-.a-twirl .armR{animation:twirlR 2.2s ease-in-out}
-@keyframes twirlL{30%,70%{transform:rotate(35deg)}}
-@keyframes twirlR{30%,70%{transform:rotate(-35deg)}}
+.a-twirl .armL{animation:outL 2.2s ease-in-out}
+.a-twirl .armR{animation:outR 2.2s ease-in-out}
+@keyframes outL{30%,70%{transform:rotate(35deg)}}
+@keyframes outR{30%,70%{transform:rotate(-35deg)}}
 
 /* dance */
 .a-dance #root{animation:dance 1.1s ease-in-out 4}
 @keyframes dance{0%,100%{transform:rotate(-3deg) translateX(-8px)}50%{transform:rotate(3deg) translateX(8px)}}
 .a-dance .armL{animation:danceL 1.1s ease-in-out 4}
 .a-dance .armR{animation:danceR 1.1s ease-in-out 4}
-@keyframes danceL{0%,100%{transform:rotate(35deg)}50%{transform:rotate(150deg)}}
-@keyframes danceR{0%,100%{transform:rotate(-150deg)}50%{transform:rotate(-35deg)}}
-.a-dance #c-skirt{animation:skirtSway 1.1s ease-in-out 4;transform-origin:200px 335px}
-@keyframes skirtSway{0%,100%{transform:skewX(5deg)}50%{transform:skewX(-5deg)}}
+.a-dance .foreL{animation:danceFL 1.1s ease-in-out 4}
+.a-dance .foreR{animation:danceFR 1.1s ease-in-out 4}
+@keyframes danceL{0%,100%{transform:rotate(30deg)}50%{transform:rotate(150deg)}}
+@keyframes danceR{0%,100%{transform:rotate(-150deg)}50%{transform:rotate(-30deg)}}
+@keyframes danceFL{0%,100%{transform:rotate(-40deg)}50%{transform:rotate(20deg)}}
+@keyframes danceFR{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(40deg)}}
+.a-dance #c-kimono{animation:sway 1.1s ease-in-out 4;transform-origin:200px 200px}
+@keyframes sway{0%,100%{transform:skewX(3deg)}50%{transform:skewX(-3deg)}}
 .a-dance #head{animation:nod .55s ease-in-out 8}
 @keyframes nod{50%{transform:rotate(4deg) translateY(2px)}}
 
-/* giggle / compliment */
+/* giggle */
 .a-giggle #root{animation:giggle .35s ease-in-out 5}
 @keyframes giggle{50%{transform:translateY(-8px) rotate(1.5deg)}}
 .a-giggle #head{animation:tilt 1.7s ease-in-out}
-.a-giggle .armR{animation:hand 1.7s ease-in-out}
-@keyframes hand{0%,100%{transform:rotate(0)}30%,70%{transform:rotate(-20deg)}}
+.a-giggle .armL{animation:shyL 1.7s ease-in-out}
+.a-giggle .armR{animation:shyR 1.7s ease-in-out}
+@keyframes shyL{30%,70%{transform:rotate(-8deg)}}
+@keyframes shyR{30%,70%{transform:rotate(8deg)}}
 
-/* pose */
-.a-pose #root{animation:pose 2.6s ease-in-out}
-@keyframes pose{0%,100%{transform:rotate(0)}25%,75%{transform:rotate(-3deg) translateX(10px)}}
-.a-pose .armL{animation:poseL 2.6s ease-in-out}
-.a-pose .armR{animation:poseR 2.6s ease-in-out}
-@keyframes poseL{25%,75%{transform:rotate(-28deg)}}
-@keyframes poseR{25%,75%{transform:rotate(28deg)}}
-.a-pose #head{animation:poseH 2.6s ease-in-out}
-@keyframes poseH{25%,75%{transform:rotate(-7deg)}}
+/* pose + sun: hands on hips (elbows bend) */
+.a-pose .armL,.a-sun .armL{animation:hipL 2.7s ease-in-out}
+.a-pose .foreL,.a-sun .foreL{animation:hipFL 2.7s ease-in-out}
+.a-pose .armR,.a-sun .armR{animation:hipR 2.7s ease-in-out}
+.a-pose .foreR,.a-sun .foreR{animation:hipFR 2.7s ease-in-out}
+@keyframes hipL{20%,80%{transform:rotate(20deg)}}
+@keyframes hipFL{20%,80%{transform:rotate(-55deg)}}
+@keyframes hipR{20%,80%{transform:rotate(-20deg)}}
+@keyframes hipFR{20%,80%{transform:rotate(55deg)}}
+.a-pose #root{animation:pose 2.7s ease-in-out}
+@keyframes pose{0%,100%{transform:rotate(0)}20%,80%{transform:rotate(-2.5deg) translateX(10px)}}
+.a-pose #head{animation:poseH 2.7s ease-in-out}
+@keyframes poseH{20%,80%{transform:rotate(-7deg)}}
+.a-sun #head{animation:sunH 2.7s ease-in-out}
+@keyframes sunH{20%,80%{transform:rotate(-9deg) translate(-3px,-4px) scaleY(.97)}}
 
-/* shy shake (decline) */
+/* decline: shy head shake */
 .a-no #head{animation:no .6s ease-in-out 2}
 @keyframes no{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-.a-no .armL,.a-no .armR{animation:cover .8s ease-out 1}
-@keyframes cover{50%{transform:rotate(0) scale(1.0)}}
 
-/* gift: both hands forward */
+/* gift: reach out */
 .a-gift .armR{animation:giftR 2s ease-in-out}
+.a-gift .foreR{animation:giftF 2s ease-in-out}
 .a-gift #head{animation:tilt 2s ease-in-out}
-@keyframes giftR{25%,75%{transform:rotate(-60deg)}}
+@keyframes giftR{25%,75%{transform:rotate(-55deg)}}
+@keyframes giftF{25%,75%{transform:rotate(-30deg)}}
 
 @media (max-width:760px){
-  #game{grid-template-columns:1fr;grid-template-rows:auto 55vh auto;height:auto}
-  #rose{max-height:55vh}
+  #game{grid-template-columns:1fr;grid-template-rows:auto 60vh auto;height:auto}
+  #rose{max-height:60vh}
+  #bubble{top:auto;bottom:10px;right:auto;left:50%;transform:translate(-50%,8px);max-width:90%;font-size:.85rem;text-align:center}
+  #bubble.on{transform:translate(-50%,0)}
 }
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
